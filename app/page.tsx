@@ -13,7 +13,6 @@ export default function Home() {
 
   // Intersection Observer hooks for each section
   const [aboutRef, aboutInView] = useInView({ threshold: 0.2 });
-  const [servicesRef, servicesInView] = useInView({ threshold: 0.2 });
   const [productsRef, productsInView] = useInView({ threshold: 0.2 });
   const [portfolioRef, portfolioInView] = useInView({ threshold: 0.2 });
   const [testimonialsRef, testimonialsInView] = useInView({ threshold: 0.2 });
@@ -21,7 +20,6 @@ export default function Home() {
   useEffect(() => {
     const sections = {
       about: aboutInView,
-      services: servicesInView,
       products: productsInView,
       portfolio: portfolioInView,
       testimonials: testimonialsInView,
@@ -31,30 +29,9 @@ export default function Home() {
     if (activeSection) {
       setActiveSection(activeSection);
     }
-  }, [aboutInView, servicesInView, productsInView, portfolioInView, testimonialsInView]);
+  }, [aboutInView, productsInView, portfolioInView, testimonialsInView]);
 
-  const services = [
-    {
-      icon: <Globe2 className="h-8 w-8 text-primary" />,
-      title: "Digital Marketing",
-      description: "Strategic online presence and campaign management to reach your target audience effectively."
-    },
-    {
-      icon: <Layout className="h-8 w-8 text-primary" />,
-      title: "Web Design",
-      description: "Beautiful, responsive websites that engage visitors and drive conversions."
-    },
-    {
-      icon: <BarChart2 className="h-8 w-8 text-primary" />,
-      title: "SEO Optimization",
-      description: "Improve your search rankings and drive organic traffic to your website."
-    },
-    {
-      icon: <Users className="h-8 w-8 text-primary" />,
-      title: "Social Media",
-      description: "Engaging social media management to build and grow your community."
-    }
-  ];
+  
 
   const products = [
     {
@@ -155,7 +132,7 @@ export default function Home() {
             </motion.div>
             
             <div className="hidden md:flex space-x-10">
-              {['about', 'services', 'products', 'portfolio', 'testimonials', 'contact'].map((section) => (
+              {['about', 'products', 'portfolio', 'testimonials', 'contact'].map((section) => (
                 <motion.a
                   key={section}
                   href={`#${section}`}
@@ -223,7 +200,7 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
                 className="md:hidden mt-4 space-y-4"
               >
-                {['about', 'services', 'products', 'portfolio', 'testimonials', 'contact'].map((section) => (
+                {['about', 'products', 'portfolio', 'testimonials', 'contact'].map((section) => (
                   <motion.a
                     key={section}
                     href={`#${section}`}
@@ -327,7 +304,7 @@ export default function Home() {
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
             className="cursor-pointer"
-            onClick={() => scrollToSection('services')}
+            onClick={() => scrollToSection('about')}
           >
             <ChevronDown className="h-8 w-8 text-primary/60" />
           </motion.div>
@@ -384,62 +361,6 @@ export default function Home() {
                 </div>
               </Card>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" ref={servicesRef} className="py-20 bg-muted/[0.03] relative">
-        <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:30px_30px]" />
-        <div className="container mx-auto px-4 relative">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={servicesInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <div className="inline-block rounded-full bg-primary/20 px-6 py-2 text-sm font-semibold text-primary mb-4 shadow-lg shadow-primary/20">
-              Our Services
-            </div>
-            <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">What We Offer</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive digital solutions to help your business thrive in the modern marketplace.
-            </p>
-          </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={servicesInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.2, duration: 0.8 }}
-              >
-                <Card className="p-8 h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/20 group border-primary/20 relative bg-gradient-to-b from-muted/50 to-transparent overflow-hidden">
-                  <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:20px_20px] rounded-lg" />
-                  <motion.div 
-                    className="mb-6 relative"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  >
-                    <div className="absolute -inset-2 bg-gradient-to-r from-indigo-500/30 to-transparent rounded-full blur-xl group-hover:opacity-100 opacity-0 transition-opacity" />
-                    <div className="h-14 w-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center group-hover:bg-indigo-500/20 transition-colors">
-                      <div className="h-8 w-8 text-indigo-400">
-                        {service.icon}
-                      </div>
-                    </div>
-                  </motion.div>
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-                  <motion.div 
-                    className="absolute -right-12 -bottom-12 h-48 w-48 bg-primary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 4, repeat: Infinity }}
-                  />
-                </Card>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
