@@ -12,6 +12,7 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState('');
 
   // Intersection Observer hooks for each section
+  const [aboutRef, aboutInView] = useInView({ threshold: 0.2 });
   const [servicesRef, servicesInView] = useInView({ threshold: 0.2 });
   const [productsRef, productsInView] = useInView({ threshold: 0.2 });
   const [portfolioRef, portfolioInView] = useInView({ threshold: 0.2 });
@@ -19,6 +20,7 @@ export default function Home() {
 
   useEffect(() => {
     const sections = {
+      about: aboutInView,
       services: servicesInView,
       products: productsInView,
       portfolio: portfolioInView,
@@ -29,7 +31,7 @@ export default function Home() {
     if (activeSection) {
       setActiveSection(activeSection);
     }
-  }, [servicesInView, productsInView, portfolioInView, testimonialsInView]);
+  }, [aboutInView, servicesInView, productsInView, portfolioInView, testimonialsInView]);
 
   const services = [
     {
@@ -153,7 +155,7 @@ export default function Home() {
             </motion.div>
             
             <div className="hidden md:flex space-x-10">
-              {['services', 'products', 'portfolio', 'testimonials', 'contact'].map((section) => (
+              {['about', 'services', 'products', 'portfolio', 'testimonials', 'contact'].map((section) => (
                 <motion.a
                   key={section}
                   href={`#${section}`}
@@ -221,7 +223,7 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
                 className="md:hidden mt-4 space-y-4"
               >
-                {['services', 'products', 'portfolio', 'testimonials', 'contact'].map((section) => (
+                {['about', 'services', 'products', 'portfolio', 'testimonials', 'contact'].map((section) => (
                   <motion.a
                     key={section}
                     href={`#${section}`}
@@ -246,9 +248,9 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-background to-background" />
-          <div className="absolute inset-0 bg-[radial-gradient(70%_70%_at_50%_50%,rgba(var(--primary-rgb),0.2)_0%,transparent_100%)]" />
-          <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/40 via-background to-background" />
+          <div className="absolute inset-0 bg-[radial-gradient(80%_80%_at_50%_50%,rgba(var(--primary-rgb),0.3)_0%,transparent_100%)]" />
+          <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:50px_50px]" />
         </div>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -263,8 +265,8 @@ export default function Home() {
               transition={{ delay: 0.2, duration: 1, type: "spring" }}
               className="mb-6 inline-block"
             >
-              <div className="rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary inline-flex items-center">
-                <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
+              <div className="rounded-full bg-primary/20 px-6 py-2 text-sm font-semibold text-primary inline-flex items-center shadow-lg shadow-primary/20">
+                <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
                 Welcome to Teenketing IT Solutions
               </div>
             </motion.div>
@@ -272,7 +274,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary leading-[1.1]"
+              className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary leading-[1.1] drop-shadow-sm"
             >
               Your Partner in <br className="hidden md:block" />Digital Excellence
             </motion.h1>
@@ -293,9 +295,9 @@ export default function Home() {
               <Button 
                 size="lg" 
                 onClick={handleWhatsAppClick}
-                className="text-lg px-8 py-6 relative overflow-hidden group rounded-full shadow-xl shadow-primary/20"
+                className="text-lg px-8 py-6 relative overflow-hidden group rounded-full shadow-xl shadow-primary/30 bg-primary hover:bg-primary/90"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <span className="relative z-10 flex items-center group-hover:translate-x-1 transition-transform">
                   Get Started
                   <ArrowRight className="ml-2 h-5 w-5 inline-block" />
@@ -305,7 +307,7 @@ export default function Home() {
                 size="lg" 
                 variant="outline" 
                 onClick={handleEmailClick}
-                className="text-lg px-8 py-6 rounded-full group border-primary/20 hover:border-primary/40"
+                className="text-lg px-8 py-6 rounded-full group border-primary/30 hover:border-primary/60 hover:bg-primary/10"
               >
                 <span className="flex items-center group-hover:translate-x-1 transition-transform">
                   Email Us
@@ -332,9 +334,63 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* About Section */}
+      <section id="about" ref={aboutRef} className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/15 via-background to-background" />
+          <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_50%,rgba(var(--primary-rgb),0.15)_0%,transparent_100%)]" />
+          <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:40px_40px]" />
+        </div>
+        <div className="container mx-auto px-4 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto text-center mb-16"
+          >
+            <div className="inline-block rounded-full bg-primary/20 px-6 py-2 text-sm font-semibold text-primary mb-6 shadow-lg shadow-primary/20">
+              About Us
+            </div>
+            <h2 className="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">
+              About Teenketing IT Solutions
+            </h2>
+          </motion.div>
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="prose prose-lg dark:prose-invert mx-auto"
+            >
+              <Card className="p-8 hover:shadow-xl transition-all duration-300 bg-gradient-to-b from-muted/50 to-transparent border-primary/20 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:20px_20px] rounded-lg" />
+                <div className="relative space-y-6 text-lg leading-relaxed">
+                  <p>
+                    At <span className="text-primary font-semibold">Teenketing IT Solutions</span>, we believe that powerful software shouldn't come with a hefty price tag. As a trusted provider of <span className="font-semibold">affordable software solutions</span>, we have empowered <span className="text-primary font-bold">5,000+ customers</span>, helping startups and small enterprises save <span className="text-primary font-bold">lakhs of rupees</span> on essential tools.
+                  </p>
+                  <p>
+                    Our mission is simple: to <span className="text-primary font-semibold">make technology accessible</span> without compromising on quality. Whether you're a growing business or an entrepreneur, we offer cost-effective software that fuels productivity, efficiency, and success.
+                  </p>
+                  <p className="font-medium">
+                    Join the thousands who have chosen <span className="text-primary font-semibold">Teenketing IT Solutions</span>—because great software should be <span className="font-bold">affordable for everyone</span>! 🚀
+                  </p>
+                  <motion.div 
+                    className="absolute -right-12 -bottom-12 h-48 w-48 bg-primary/15 rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition-opacity"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                  />
+                </div>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
-      <section id="services" ref={servicesRef} className="py-20 bg-muted/[0.05] relative">
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:30px_30px]" />
+      <section id="services" ref={servicesRef} className="py-20 bg-muted/[0.03] relative">
+        <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:30px_30px]" />
         <div className="container mx-auto px-4 relative">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -342,7 +398,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4">
+            <div className="inline-block rounded-full bg-primary/20 px-6 py-2 text-sm font-semibold text-primary mb-4 shadow-lg shadow-primary/20">
               Our Services
             </div>
             <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">What We Offer</h2>
@@ -358,20 +414,29 @@ export default function Home() {
                 animate={servicesInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.2, duration: 0.8 }}
               >
-                <Card className="p-6 h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10 group border-primary/10 relative bg-gradient-to-b from-muted/50 to-transparent">
+                <Card className="p-8 h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/20 group border-primary/20 relative bg-gradient-to-b from-muted/50 to-transparent overflow-hidden">
                   <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:20px_20px] rounded-lg" />
                   <motion.div 
-                    className="mb-4 relative"
+                    className="mb-6 relative"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
-                    <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-transparent rounded-full blur-xl group-hover:opacity-100 opacity-0 transition-opacity" />
-                    {service.icon}
+                    <div className="absolute -inset-2 bg-gradient-to-r from-indigo-500/30 to-transparent rounded-full blur-xl group-hover:opacity-100 opacity-0 transition-opacity" />
+                    <div className="h-14 w-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center group-hover:bg-indigo-500/20 transition-colors">
+                      <div className="h-8 w-8 text-indigo-400">
+                        {service.icon}
+                      </div>
+                    </div>
                   </motion.div>
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
                     {service.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                  <motion.div 
+                    className="absolute -right-12 -bottom-12 h-48 w-48 bg-primary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                  />
                 </Card>
               </motion.div>
             ))}
