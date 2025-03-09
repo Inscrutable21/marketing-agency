@@ -113,13 +113,13 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background dark selection:bg-primary/20 selection:text-primary">
+    <div className="min-h-screen bg-white selection:bg-blue-100 selection:text-blue-600">
       {/* Navigation */}
       <motion.nav 
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed w-full bg-background/85 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 z-50 border-b border-border/40 shadow-sm"
+        className="fixed w-full bg-white/90 backdrop-blur-xl supports-[backdrop-filter]:bg-white/80 z-50 border-b border-slate-200 shadow-sm"
       >
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
@@ -140,8 +140,8 @@ export default function Home() {
                     e.preventDefault();
                     scrollToSection(section);
                   }}
-                  className={`text-foreground/80 hover:text-foreground transition-all duration-300 capitalize relative text-sm font-medium tracking-wide ${
-                    activeSection === section ? 'text-primary font-semibold' : ''
+                  className={`text-slate-600 hover:text-slate-900 transition-all duration-300 capitalize relative text-sm font-medium tracking-wide ${
+                    activeSection === section ? 'text-blue-600 font-semibold' : ''
                   }`}
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -150,7 +150,7 @@ export default function Home() {
                   {activeSection === section && (
                     <motion.div
                       layoutId="activeSection"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 rounded-full"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -162,7 +162,7 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <Button className="hidden md:flex px-6 rounded-full shadow-lg shadow-primary/20" onClick={handleWhatsAppClick}>
+              <Button className="hidden md:flex px-6 rounded-full shadow-lg shadow-blue-200 bg-blue-600 hover:bg-blue-700 text-white" onClick={handleWhatsAppClick}>
                 Contact Us
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -208,14 +208,16 @@ export default function Home() {
                       e.preventDefault();
                       scrollToSection(section);
                     }}
-                    className="block text-foreground/80 hover:text-foreground transition-colors capitalize"
+                    className={`block text-slate-600 hover:text-blue-600 transition-colors capitalize ${
+                      activeSection === section ? 'text-blue-600 font-semibold' : ''
+                    }`}
                     whileHover={{ x: 10 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
                     {section}
                   </motion.a>
                 ))}
-                <Button className="w-full" onClick={handleWhatsAppClick}>Contact Us</Button>
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white" onClick={handleWhatsAppClick}>Contact Us</Button>
               </motion.div>
             )}
           </AnimatePresence>
@@ -225,9 +227,9 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/40 via-background to-background" />
-          <div className="absolute inset-0 bg-[radial-gradient(80%_80%_at_50%_50%,rgba(var(--primary-rgb),0.3)_0%,transparent_100%)]" />
-          <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:50px_50px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-white to-white" />
+          <div className="absolute inset-0 bg-[radial-gradient(80%_80%_at_50%_50%,rgba(59,130,246,0.1)_0%,transparent_100%)]" />
+          <div className="absolute inset-0 bg-grid-slate-100/50 bg-[size:50px_50px]" />
         </div>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -242,8 +244,8 @@ export default function Home() {
               transition={{ delay: 0.2, duration: 1, type: "spring" }}
               className="mb-6 inline-block"
             >
-              <div className="rounded-full bg-primary/20 px-6 py-2 text-sm font-semibold text-primary inline-flex items-center shadow-lg shadow-primary/20">
-                <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
+              <div className="rounded-full bg-blue-100 px-6 py-2 text-sm font-semibold text-blue-600 inline-flex items-center shadow-lg shadow-blue-100">
+                <span className="flex h-2 w-2 rounded-full bg-blue-600 mr-2 animate-pulse"></span>
                 Welcome to Teenketing IT Solutions
               </div>
             </motion.div>
@@ -251,7 +253,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary leading-[1.1] drop-shadow-sm"
+              className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-sky-500 leading-[1.1] drop-shadow-sm"
             >
               Your Partner in <br className="hidden md:block" />Digital Excellence
             </motion.h1>
@@ -259,7 +261,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed"
+              className="text-xl md:text-2xl text-slate-600 mb-8 leading-relaxed"
             >
               Premium software solutions and IT services <br className="hidden md:block" />for businesses and professionals
             </motion.p>
@@ -272,7 +274,7 @@ export default function Home() {
               <Button 
                 size="lg" 
                 onClick={handleWhatsAppClick}
-                className="text-lg px-8 py-6 relative overflow-hidden group rounded-full shadow-xl shadow-primary/30 bg-primary hover:bg-primary/90"
+                className="text-lg px-8 py-6 relative overflow-hidden group rounded-full shadow-xl shadow-blue-200 bg-blue-600 hover:bg-blue-700 text-white"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <span className="relative z-10 flex items-center group-hover:translate-x-1 transition-transform">
@@ -284,11 +286,11 @@ export default function Home() {
                 size="lg" 
                 variant="outline" 
                 onClick={handleEmailClick}
-                className="text-lg px-8 py-6 rounded-full group border-primary/30 hover:border-primary/60 hover:bg-primary/10"
+                className="text-lg px-8 py-6 rounded-full group border-blue-200 hover:border-blue-300 hover:bg-blue-50 text-slate-700"
               >
                 <span className="flex items-center group-hover:translate-x-1 transition-transform">
-                  Email Us
-                  <Mail className="ml-2 h-5 w-5" />
+                Email Us
+                <Mail className="ml-2 h-5 w-5" />
                 </span>
               </Button>
             </motion.div>
@@ -306,7 +308,7 @@ export default function Home() {
             className="cursor-pointer"
             onClick={() => scrollToSection('about')}
           >
-            <ChevronDown className="h-8 w-8 text-primary/60" />
+            <ChevronDown className="h-8 w-8 text-blue-400" />
           </motion.div>
         </motion.div>
       </section>
@@ -314,60 +316,60 @@ export default function Home() {
       {/* About Section */}
       <section id="about" ref={aboutRef} className="py-20 relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/15 via-background to-background" />
-          <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_50%,rgba(var(--primary-rgb),0.15)_0%,transparent_100%)]" />
-          <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:40px_40px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-white to-white" />
+          <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_50%,rgba(59,130,246,0.1)_0%,transparent_100%)]" />
+          <div className="absolute inset-0 bg-grid-slate-100/50 bg-[size:40px_40px]" />
         </div>
         <div className="container mx-auto px-4 relative">
-          <motion.div
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto text-center mb-16"
           >
-            <div className="inline-block rounded-full bg-primary/20 px-6 py-2 text-sm font-semibold text-primary mb-6 shadow-lg shadow-primary/20">
+            <div className="inline-block rounded-full bg-blue-100 px-6 py-2 text-sm font-semibold text-blue-600 mb-6 shadow-lg shadow-blue-100">
               About Us
             </div>
-            <h2 className="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">
+            <h2 className="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-slate-800 to-slate-600">
               About Teenketing IT Solutions
             </h2>
           </motion.div>
           <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="prose prose-lg dark:prose-invert mx-auto"
+              className="prose prose-lg prose-slate mx-auto"
             >
-              <Card className="p-8 hover:shadow-xl transition-all duration-300 bg-gradient-to-b from-muted/50 to-transparent border-primary/20 relative overflow-hidden group">
-                <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:20px_20px] rounded-lg" />
+              <Card className="p-8 hover:shadow-xl transition-all duration-300 bg-gradient-to-b from-white to-blue-50/50 border-blue-100 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-grid-slate-100/50 bg-[size:20px_20px] rounded-lg" />
                 <div className="relative space-y-6 text-lg leading-relaxed">
                   <p>
-                    At <span className="text-primary font-semibold">Teenketing IT Solutions</span>, we believe that powerful software shouldn't come with a hefty price tag. As a trusted provider of <span className="font-semibold">affordable software solutions</span>, we have empowered <span className="text-primary font-bold">5,000+ customers</span>, helping startups and small enterprises save <span className="text-primary font-bold">lakhs of rupees</span> on essential tools.
+                    At <span className="text-blue-600 font-semibold">Teenketing IT Solutions</span>, we believe that powerful software shouldn't come with a hefty price tag. As a trusted provider of <span className="font-semibold">affordable software solutions</span>, we have empowered <span className="text-blue-600 font-bold">5,000+ customers</span>, helping startups and small enterprises save <span className="text-blue-600 font-bold">lakhs of rupees</span> on essential tools.
                   </p>
                   <p>
-                    Our mission is simple: to <span className="text-primary font-semibold">make technology accessible</span> without compromising on quality. Whether you're a growing business or an entrepreneur, we offer cost-effective software that fuels productivity, efficiency, and success.
+                    Our mission is simple: to <span className="text-blue-600 font-semibold">make technology accessible</span> without compromising on quality. Whether you're a growing business or an entrepreneur, we offer cost-effective software that fuels productivity, efficiency, and success.
                   </p>
                   <p className="font-medium">
-                    Join the thousands who have chosen <span className="text-primary font-semibold">Teenketing IT Solutions</span>—because great software should be <span className="font-bold">affordable for everyone</span>! 🚀
+                    Join the thousands who have chosen <span className="text-blue-600 font-semibold">Teenketing IT Solutions</span>—because great software should be <span className="font-bold">affordable for everyone</span>! 🚀
                   </p>
                   <motion.div 
-                    className="absolute -right-12 -bottom-12 h-48 w-48 bg-primary/15 rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition-opacity"
+                    className="absolute -right-12 -bottom-12 h-48 w-48 bg-blue-200/50 rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition-opacity"
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 4, repeat: Infinity }}
                   />
                 </div>
-              </Card>
-            </motion.div>
+                </Card>
+              </motion.div>
           </div>
         </div>
       </section>
 
       {/* Products Section */}
       <section id="products" ref={productsRef} className="py-20 relative">
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:30px_30px]" />
+        <div className="absolute inset-0 bg-grid-slate-100/50 bg-[size:30px_30px]" />
         <div className="container mx-auto px-4 relative">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -375,11 +377,11 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4">
+            <div className="inline-block rounded-full bg-blue-100 px-6 py-2 text-sm font-semibold text-blue-600 mb-4 shadow-lg shadow-blue-100">
               Our Products
             </div>
-            <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">Premium Solutions</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-800 to-slate-600">Premium Solutions</h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
               Premium software solutions for professionals and businesses
             </p>
           </motion.div>
@@ -391,9 +393,9 @@ export default function Home() {
                 animate={productsInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.2, duration: 0.8 }}
               >
-                <Card className="overflow-hidden group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-primary/10 bg-gradient-to-b from-muted/50 to-transparent relative">
-                  <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:20px_20px] rounded-lg" />
-                  <div className="aspect-video relative overflow-hidden bg-gradient-to-br from-primary/5 to-background">
+                <Card className="overflow-hidden group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-blue-100 bg-gradient-to-b from-white to-blue-50/30 relative">
+                  <div className="absolute inset-0 bg-grid-slate-100/50 bg-[size:20px_20px] rounded-lg" />
+                  <div className="aspect-video relative overflow-hidden bg-gradient-to-br from-blue-50 to-white">
                     <motion.img 
                       src={product.image} 
                       alt={product.title}
@@ -403,28 +405,28 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6 relative">
-                    <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                    <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-600 transition-colors text-slate-800">
                       {product.title}
                     </h3>
                     {product.subtitle && (
-                      <p className="text-lg text-muted-foreground mb-2">{product.subtitle}</p>
+                      <p className="text-lg text-slate-500 mb-2">{product.subtitle}</p>
                     )}
-                    <p className="text-muted-foreground mb-4 leading-relaxed">{product.description}</p>
+                    <p className="text-slate-600 mb-4 leading-relaxed">{product.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {product.platforms.map((platform, i) => (
-                        <span key={i} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                        <span key={i} className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium">
                           {platform}
                         </span>
                       ))}
                     </div>
                     <div className="space-y-4">
-                      <p className="font-bold text-lg text-primary">{product.features}</p>
-                      <div className="flex items-center text-sm text-muted-foreground">
-                        <Mail className="h-4 w-4 mr-2" />
+                      <p className="font-bold text-lg text-blue-600">{product.features}</p>
+                      <div className="flex items-center text-sm text-slate-500">
+                        <Mail className="h-4 w-4 mr-2 text-blue-500" />
                         {product.activation}
                       </div>
                       <Button 
-                        className="w-full group rounded-full"
+                        className="w-full group rounded-full bg-blue-600 hover:bg-blue-700 text-white"
                         onClick={handleWhatsAppClick}
                       >
                         <span className="group-hover:translate-x-1 transition-transform flex items-center">
@@ -442,8 +444,8 @@ export default function Home() {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" ref={portfolioRef} className="py-20 bg-muted/[0.05] relative">
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:30px_30px]" />
+      <section id="portfolio" ref={portfolioRef} className="py-20 bg-blue-50/50 relative">
+        <div className="absolute inset-0 bg-grid-slate-100/80 bg-[size:30px_30px]" />
         <div className="container mx-auto px-4 relative">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -451,11 +453,11 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4">
+            <div className="inline-block rounded-full bg-blue-100 px-6 py-2 text-sm font-semibold text-blue-600 mb-4 shadow-lg shadow-blue-100">
               Our Work
             </div>
-            <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">Featured Projects</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-800 to-slate-600">Featured Projects</h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
               Take a look at some of our recent projects and success stories.
             </p>
           </motion.div>
@@ -477,7 +479,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={portfolioInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.2, duration: 0.8 }}
-                className="relative group overflow-hidden rounded-2xl"
+                className="relative group overflow-hidden rounded-2xl shadow-lg"
               >
                 <motion.img 
                   src={item.image}
@@ -486,7 +488,7 @@ export default function Home() {
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.7 }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-sm group-hover:backdrop-blur-0">
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-800/50 to-transparent flex items-end justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-sm group-hover:backdrop-blur-0">
                   <div className="text-white text-center p-8 transform translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
                     <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
                     <p className="text-white/90">{item.description}</p>
@@ -500,7 +502,7 @@ export default function Home() {
 
       {/* Testimonials Section */}
       <section id="testimonials" ref={testimonialsRef} className="py-20 relative">
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:30px_30px]" />
+        <div className="absolute inset-0 bg-grid-slate-100/50 bg-[size:30px_30px]" />
         <div className="container mx-auto px-4 relative">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -508,11 +510,11 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4">
+            <div className="inline-block rounded-full bg-blue-100 px-6 py-2 text-sm font-semibold text-blue-600 mb-4 shadow-lg shadow-blue-100">
               Testimonials
             </div>
-            <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">What Clients Say</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-800 to-slate-600">What Clients Say</h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
               Don't just take our word for it - hear what our clients have to say.
             </p>
           </motion.div>
@@ -524,25 +526,25 @@ export default function Home() {
                 animate={testimonialsInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.2, duration: 0.8 }}
               >
-                <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group relative before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary/5 before:to-transparent before:opacity-0 before:transition-opacity hover:before:opacity-100 bg-gradient-to-b from-muted/50 to-transparent border-primary/10">
-                  <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:20px_20px] rounded-lg" />
+                <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group relative before:absolute before:inset-0 before:bg-gradient-to-r before:from-blue-50 before:to-transparent before:opacity-0 before:transition-opacity hover:before:opacity-100 bg-gradient-to-b from-white to-blue-50/30 border-blue-100">
+                  <div className="absolute inset-0 bg-grid-slate-100/50 bg-[size:20px_20px] rounded-lg" />
                   <div className="relative">
-                    <div className="flex items-center mb-4">
-                      <motion.img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-12 h-12 rounded-full mr-4 ring-2 ring-primary/20"
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                      />
-                      <div>
-                        <h4 className="font-semibold group-hover:text-primary transition-colors">
-                          {testimonial.name}
-                        </h4>
-                        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                      </div>
+                  <div className="flex items-center mb-4">
+                    <motion.img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                        className="w-12 h-12 rounded-full mr-4 ring-2 ring-blue-100"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    />
+                    <div>
+                      <h4 className="font-semibold group-hover:text-blue-600 transition-colors text-slate-800">
+                        {testimonial.name}
+                      </h4>
+                      <p className="text-sm text-slate-500">{testimonial.role}</p>
                     </div>
-                    <p className="text-muted-foreground italic leading-relaxed">"{testimonial.content}"</p>
+                  </div>
+                    <p className="text-slate-600 italic leading-relaxed">"{testimonial.content}"</p>
                   </div>
                 </Card>
               </motion.div>
@@ -553,9 +555,9 @@ export default function Home() {
 
       {/* Contact Section */}
       <section id="contact" className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-muted/[0.05] to-background" />
-        <div className="absolute inset-0 bg-[radial-gradient(40%_40%_at_50%_50%,rgba(var(--primary-rgb),0.2)_0%,transparent_100%)]" />
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:30px_30px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 to-white" />
+        <div className="absolute inset-0 bg-[radial-gradient(40%_40%_at_50%_50%,rgba(59,130,246,0.1)_0%,transparent_100%)]" />
+        <div className="absolute inset-0 bg-grid-slate-100/50 bg-[size:30px_30px]" />
         <div className="container mx-auto px-4 relative">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -564,11 +566,11 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4">
+            <div className="inline-block rounded-full bg-blue-100 px-6 py-2 text-sm font-semibold text-blue-600 mb-4 shadow-lg shadow-blue-100">
               Contact Us
             </div>
-            <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">Get in Touch</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-800 to-slate-600">Get in Touch</h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
               Ready to elevate your digital experience? Let's discuss your requirements.
             </p>
           </motion.div>
@@ -578,21 +580,21 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            <Card className="p-8 hover:shadow-xl transition-all duration-300 bg-gradient-to-b from-muted/50 to-transparent border-primary/10 relative">
-              <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:20px_20px] rounded-lg" />
+            <Card className="p-8 hover:shadow-xl transition-all duration-300 bg-gradient-to-b from-white to-blue-50/30 border-blue-100 relative">
+              <div className="absolute inset-0 bg-grid-slate-100/50 bg-[size:20px_20px] rounded-lg" />
               <div className="grid md:grid-cols-2 gap-8 relative">
                 <div>
-                  <h3 className="text-xl font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">Contact Information</h3>
+                  <h3 className="text-xl font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-slate-800 to-slate-600">Contact Information</h3>
                   <div className="space-y-6">
                     <motion.div 
                       className="flex items-center group"
                       whileHover={{ x: 10 }}
                       transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     >
-                      <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 group-hover:bg-primary/20 transition-colors">
-                        <Mail className="h-5 w-5 text-primary" />
+                      <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 group-hover:bg-blue-200 transition-colors">
+                        <Mail className="h-5 w-5 text-blue-600" />
                       </div>
-                      <a href="mailto:teenketingitsolutions@gmail.com" className="hover:text-primary transition-colors">
+                      <a href="mailto:teenketingitsolutions@gmail.com" className="text-slate-700 hover:text-blue-600 transition-colors">
                         teenketingitsolutions@gmail.com
                       </a>
                     </motion.div>
@@ -601,10 +603,10 @@ export default function Home() {
                       whileHover={{ x: 10 }}
                       transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     >
-                      <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 group-hover:bg-primary/20 transition-colors">
-                        <MessageSquare className="h-5 w-5 text-primary" />
+                      <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 group-hover:bg-blue-200 transition-colors">
+                        <MessageSquare className="h-5 w-5 text-blue-600" />
                       </div>
-                      <a href="https://wa.me/9555217697" className="hover:text-primary transition-colors">
+                      <a href="https://wa.me/9555217697" className="text-slate-700 hover:text-blue-600 transition-colors">
                         +91 95552 17697
                       </a>
                     </motion.div>
@@ -612,7 +614,7 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col gap-4">
                   <Button 
-                    className="w-full text-lg py-6 group rounded-full shadow-lg shadow-primary/20"
+                    className="w-full text-lg py-6 group rounded-full shadow-lg shadow-blue-200 bg-blue-600 hover:bg-blue-700 text-white"
                     onClick={handleWhatsAppClick}
                   >
                     <span className="group-hover:translate-x-2 transition-transform flex items-center">
@@ -621,7 +623,7 @@ export default function Home() {
                     </span>
                   </Button>
                   <Button 
-                    className="w-full text-lg py-6 group rounded-full border-primary/20 hover:border-primary/40"
+                    className="w-full text-lg py-6 group rounded-full border-blue-200 hover:border-blue-300 hover:bg-blue-50 text-slate-700"
                     variant="outline" 
                     onClick={handleEmailClick}
                   >
@@ -630,7 +632,7 @@ export default function Home() {
                       <Mail className="ml-2 h-5 w-5" />
                     </span>
                   </Button>
-                  <p className="text-sm text-muted-foreground text-center">
+                  <p className="text-sm text-slate-500 text-center">
                     We'll get back to you within 24 hours
                   </p>
                 </div>
@@ -641,8 +643,8 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 relative">
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:30px_30px]" />
+      <footer className="py-12 relative bg-slate-50">
+        <div className="absolute inset-0 bg-grid-slate-100/80 bg-[size:30px_30px]" />
         <div className="container mx-auto px-4 relative">
           <motion.div 
             initial={{ opacity: 0 }}
@@ -661,7 +663,7 @@ export default function Home() {
             <div className="flex space-x-6">
               <motion.a 
                 href="#" 
-                className="text-foreground/80 hover:text-primary transition-colors text-sm"
+                className="text-slate-600 hover:text-blue-600 transition-colors text-sm"
                 whileHover={{ scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
@@ -669,7 +671,7 @@ export default function Home() {
               </motion.a>
               <motion.a 
                 href="#" 
-                className="text-foreground/80 hover:text-primary transition-colors text-sm"
+                className="text-slate-600 hover:text-blue-600 transition-colors text-sm"
                 whileHover={{ scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
@@ -682,7 +684,7 @@ export default function Home() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="mt-8 text-center text-sm text-muted-foreground"
+            className="mt-8 text-center text-sm text-slate-500"
           >
             © {new Date().getFullYear()} Teenketing IT Solutions. All rights reserved.
           </motion.div>
