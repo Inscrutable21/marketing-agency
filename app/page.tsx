@@ -83,14 +83,14 @@ export default function Home() {
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "CEO, TechStart",
+      name: "Khushi",
+      role: "Client",
       content: "Working with Teenketing transformed our digital presence. Their software solutions have streamlined our operations significantly.",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&h=200&auto=format&fit=crop"
     },
     {
-      name: "Michael Chen",
-      role: "Marketing Director, GrowthCo",
+      name: "Anand",
+      role: "Client",
       content: "The team's expertise in IT solutions and their professional support have made our digital transformation seamless.",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&h=200&auto=format&fit=crop"
     }
